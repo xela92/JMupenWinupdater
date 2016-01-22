@@ -32,11 +32,11 @@ public class JMupenWinupdater {
         final String javaBin = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java.exe";
 
         currentJar = JMupenWinupdater.getCurrentJarFromTxt();
-        JMupenWinupdater.showInfo("currentJarTxtFile:", currentJarTxtFile.getAbsolutePath());
-        JMupenWinupdater.showInfo("currentJar:", currentJar.getAbsolutePath());
-        JMupenWinupdater.showInfo("temporary dir where I take txt file: ", tmpDir.getAbsolutePath());
-        JMupenWinupdater.showInfo(":", currentJar.getAbsolutePath());
-
+        //DEBUG
+        //JMupenWinupdater.showInfo("currentJarTxtFile:", currentJarTxtFile.getAbsolutePath());
+        //JMupenWinupdater.showInfo("currentJar:", currentJar.getAbsolutePath());
+        //JMupenWinupdater.showInfo("temporary dir where I take txt file: ", tmpDir.getAbsolutePath());
+        currentJar.delete();
         try {
             FileUtils.moveFile(updatePackage, currentJar);
         } catch (IOException ex) {
@@ -73,7 +73,7 @@ public class JMupenWinupdater {
 
         }
         if (path == null) {
-            path = "";
+            JMupenWinupdater.showError("Error", "Error reading JMupen actual path." );
         }
         return new File(path);
     }
